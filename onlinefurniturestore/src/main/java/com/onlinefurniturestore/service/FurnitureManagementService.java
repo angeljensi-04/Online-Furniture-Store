@@ -45,10 +45,10 @@ public class FurnitureManagementService implements FurnitureManagementServiceInt
 				logger.info("Furniture details are: "+getFurniture);
 				return getFurniture;
 			} else {
-				throw new FurnitureServiceException("The table is empty");
+				throw new FurnitureServiceException("There is no value in furniture");
 			}
 		} catch (Exception e) {
-			throw new FurnitureServiceException("The table is empty");
+			throw new FurnitureServiceException("There is no value in furniture");
 		}
 
 	}
@@ -68,21 +68,18 @@ public class FurnitureManagementService implements FurnitureManagementServiceInt
 			logger.info("View Furniture inprogress...");
 			getFurniture =furnitureRepo.findById(furnitureId).orElse(null);
 			if(getFurniture!=null) {
-			if (getFurniture.getFurnitureId() == furnitureId) {
 				getFurniture = furnitureRepo.findById(furnitureId).orElse(null);
 				logger.info("Details of Furniture: "+getFurniture);
-				
-			} else {
-				throw new FurnitureServiceException("Id is not Present");
-			}}
+				return getFurniture;
+			}
 			else {
 				throw new FurnitureServiceException("Id is not Present");
 			}
 		} catch (Exception e) {
-			e.getMessage();
+			throw new FurnitureServiceException("Id is not Present");
 		}
 		
-		return getFurniture;
+		
 	}
 
 	/**
@@ -91,13 +88,18 @@ public class FurnitureManagementService implements FurnitureManagementServiceInt
 	 * Return Value :Furniture object 
 	 * Exception : FurnitureServiceException - It is raised when Furniture already exist
 	 **/
-	@Transactional
+	@Transactional(readOnly = true)
 	@Override
 	public Furniture registerFurniture(Furniture furniture) throws FurnitureServiceException {
 		logger.info(" Furniture inprogress...");
+		if(furniture.getFurnitureId()!=0) {
 		Furniture addFurniture = furnitureRepo.save(furniture);
 		logger.info("Furniture details: "+addFurniture);
 		return addFurniture;
+		}
+		else {
+			throw new FurnitureServiceException("The given id is not valid");
+		}
 	}
 
 	/**
@@ -111,11 +113,17 @@ public class FurnitureManagementService implements FurnitureManagementServiceInt
 	@Override
 	public Furniture updateFurnitureById(long furnitureId, Furniture furniture) throws FurnitureServiceException {
 		Furniture updFurniture;
+		Furniture getFurniture = furnitureRepo.findById(furnitureId).orElse(null);
 		try {
 			logger.info("Update Furniture inprogress...");
+			if(getFurniture!=null) {
 				updFurniture = furnitureRepo.save(furniture);
 				logger.info("Furniture details: "+updFurniture);
 				return updFurniture;
+			}
+			else {
+				throw new FurnitureServiceException("The given id is not present in furniture");
+			}
 		} catch (Exception e) {
 			throw new FurnitureServiceException("id is not found");
 		}
@@ -161,7 +169,7 @@ public class FurnitureManagementService implements FurnitureManagementServiceInt
 		try {
 			logger.info("Delete Furniture inprogress...");
 			furniture = furnitureRepo.findById(furnitureId).orElse(null);
-			if (furniture.getFurnitureId() != 0) {
+			if (furniture.getFurnitureId() != 0 && furniture!=null) {
 				furnitureRepo.deleteById(furnitureId);
 				logger.info("Furniture deleted"+furnitureId);
 			} else {

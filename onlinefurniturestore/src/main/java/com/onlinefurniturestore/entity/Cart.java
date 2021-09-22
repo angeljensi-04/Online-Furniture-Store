@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "Cart")
@@ -24,7 +23,7 @@ public class Cart {
 	private Furniture furniture;
 
 	@Column(name = "Quantity", nullable = false, length = 50)
-	@NotBlank(message = "Quantity should not be blank")
+	
 	private int quantity;
 
 	public int getCartId() {

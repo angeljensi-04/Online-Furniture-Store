@@ -40,10 +40,10 @@ public class UserManagementController {
 	 * @throws UserNotFoundException 
 	**/
 	
-	@PutMapping(path = "/updateUser")
+	@PutMapping(path = "/updateUser/{uId}")
 	public ResponseEntity<FurnitureUser> updateUser(@RequestBody FurnitureUser user) throws UserNotFoundException {
 		
-		FurnitureUser user1 = umsd.updateUser(user);
+		FurnitureUser user1 = umsd.updateUser(user.getUId(),user);
 		return new ResponseEntity<FurnitureUser>(user1, HttpStatus.OK);
 	}
 
@@ -70,10 +70,10 @@ public class UserManagementController {
 	 * @throws UserNotFoundException 
 	**/
 	
-	@DeleteMapping(path = "/deleteUserById/{uid}")
-	public ResponseEntity<FurnitureUser> deleteUserById(@PathVariable int uid) throws UserNotFoundException {
+	@DeleteMapping(path = "/deleteUserById/{uId}")
+	public ResponseEntity<FurnitureUser> deleteUserById(@PathVariable int uId) throws UserNotFoundException {
 		
-		FurnitureUser user4 = umsd.deleteUserById(uid);
+		FurnitureUser user4 = umsd.deleteUserById(uId);
 		return new ResponseEntity<FurnitureUser>(user4, HttpStatus.OK);
 	
 	}
@@ -117,10 +117,10 @@ public class UserManagementController {
 	 * @throws UserNotFoundException 
 	**/
 	
-	@GetMapping("/getUser/{uid}")
-	public ResponseEntity<FurnitureUser> getId(@PathVariable int userId) throws UserNotFoundException {
+	@GetMapping("/getUser/{uId}")
+	public ResponseEntity<FurnitureUser> getId(@PathVariable int uId) throws UserNotFoundException {
 		
-		FurnitureUser resultuser = umsd.getId(userId);
+		FurnitureUser resultuser = umsd.getId(uId);
 		return new ResponseEntity<FurnitureUser>(resultuser, HttpStatus.OK);
 		
 	}

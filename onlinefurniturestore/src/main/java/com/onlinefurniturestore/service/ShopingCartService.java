@@ -124,12 +124,16 @@ public class ShopingCartService implements ShopingCartServiceInterface {
 	@Override
 	public Cart deleteCartById(int cartId) throws ShopingCartException {
 		logger.info("Delete cart by id inprogress...");
+		try {
 		Optional<Cart> cart = shopingrepo.findById(cartId);
 		if (cart.isPresent()) {
 			shopingrepo.delete(cart.get());
 			logger.info("Cart details: " + cart.get());
 			return cart.get();
 		} else {
+			throw new ShopingCartException("Cart does not exist");
+		}}
+		catch (Exception e) {
 			throw new ShopingCartException("Cart does not exist");
 		}
 	}

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.onlinefurniturestore.dao.OrderDao;
 import com.onlinefurniturestore.entity.FurnitureOrder;
+import com.onlinefurniturestore.exception.OrderServiceException;
 import com.onlinefurniturestore.exception.UserNotFoundException;
 
 
@@ -28,16 +29,22 @@ public class OrderService implements OrderServiceInterface {
 	 * Description : To fetch all FurnitureOrder details from the database 
 	 * Return Value :List<FurnitureOrder> object of the furnitureOrder been fetched
 	 *  Exception : UserNotFoundException - It is raised when FurnitureOrder is empty
+	 * @throws OrderServiceException 
 	 * 
 	 * @throws UserNotFoundException
 	 **/
 	@Transactional
 	@Override
-	public List<FurnitureOrder> getAllOrders() {
+	public List<FurnitureOrder> getAllOrders() throws OrderServiceException {
 		logger.info("Fetching FurnitureOrder inprogress...");
 		List<FurnitureOrder> getFurniture = od.findAll();
+		if(getFurniture!=null) {
 		logger.info("FurnitureOrder details: " + getFurniture);
 		return getFurniture;
+		}
+		else {
+			throw new OrderServiceException("There is no values in furniture");
+		}
 	}
 
 
@@ -53,16 +60,16 @@ public class OrderService implements OrderServiceInterface {
 	**/
 	@Transactional
 	@Override
-	public FurnitureOrder updateOrder(FurnitureOrder order) throws UserNotFoundException {
+	public FurnitureOrder updateOrder(FurnitureOrder order) throws OrderServiceException {
+		
 		if ((order != null)) {
-
 			logger.info("Update FurnitureOrder inprogress...");
 			FurnitureOrder updateUser = od.save(order);
 			logger.info("FurnitureOrder details: " + updateUser);
 			return updateUser;
 
 		} else {
-			throw new UserNotFoundException("Order no exist");
+			throw new OrderServiceException("Order no exist");
 
 		}
 	}
@@ -79,7 +86,7 @@ public class OrderService implements OrderServiceInterface {
 	**/
 	@Transactional
 	@Override
-	public FurnitureOrder updateOrderById(String orderId, FurnitureOrder order) throws UserNotFoundException {
+	public FurnitureOrder updateOrderById(String orderId, FurnitureOrder order) throws OrderServiceException {
 		FurnitureOrder resultUser;
 		try {
 			logger.info("Update FurnitureOrder by ID inprogress...");
@@ -91,10 +98,10 @@ public class OrderService implements OrderServiceInterface {
 			}
 
 			else {
-				throw new UserNotFoundException("No order found");
+				throw new OrderServiceException("No order found");
 			}
 		} catch (Exception e) {
-			throw new UserNotFoundException("no orderFound");
+			throw new OrderServiceException("no orderFound");
 		}
 	}
 

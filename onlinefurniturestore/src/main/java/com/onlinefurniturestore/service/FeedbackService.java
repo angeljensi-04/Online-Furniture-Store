@@ -34,7 +34,7 @@ public class FeedbackService implements IFeedbackService {
 	 * 
 	 * @throws CustomerFeedbackException
 	 **/
-	@Transactional
+	@Transactional(readOnly = true)
 	@Override
 	public Review addReview(Review review) throws CustomerFeedbackException {
 		logger.info("Fetching Review inprogress...");
@@ -87,7 +87,7 @@ public class FeedbackService implements IFeedbackService {
 		try {
 			logger.info("View Review inprogress...");
 			getReview = feedbackRepository.findById(feedBackId).orElse(null);
-			if (getReview.getFeedBackId() == feedBackId) {
+			if (getReview.getFeedBackId() == feedBackId && getReview!=null) {
 				getReview = feedbackRepository.findById(feedBackId).orElse(null);
 				logger.info("Review details: " + getReview);
 			} else {

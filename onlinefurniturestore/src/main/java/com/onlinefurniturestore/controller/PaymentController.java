@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.onlinefurniturestore.entity.Bill;
 import com.onlinefurniturestore.entity.Card;
+import com.onlinefurniturestore.exception.PaymentException;
 import com.onlinefurniturestore.service.PaymentServiceInterface;
 
 /**
@@ -35,7 +36,7 @@ public class PaymentController {
 	 * @throws Exception 
 	**/
 	@GetMapping(path = "/getBillByIdeDetalis/{billNo}")
-	public ResponseEntity<Bill> getBillById(@RequestParam long billNo) throws Exception {
+	public ResponseEntity<Bill> getBillById(@RequestParam long billNo) throws PaymentException {
 		return new ResponseEntity<>(paymentService.getBillById(billNo), HttpStatus.OK);
 	}
 
@@ -47,7 +48,7 @@ public class PaymentController {
 	 * @throws Exception 
 	**/
 	@PutMapping("/payByCash/{amount}")
-	public ResponseEntity<String> payByCash(@RequestParam double amount) throws Exception {
+	public ResponseEntity<String> payByCash(@RequestParam double amount) throws PaymentException {
 		double change = paymentService.payByCash(amount);
 		if (change == 0) {
 			return new ResponseEntity<>("Your transaction is completed.. ", HttpStatus.OK);
@@ -66,7 +67,7 @@ public class PaymentController {
 	 * @throws Exception 
 	**/
 	@PostMapping(path = "/payByCard")
-	public ResponseEntity<String> payByCard(@RequestBody Card card) throws Exception {
+	public ResponseEntity<String> payByCard(@RequestBody Card card) throws PaymentException {
 		Card result = paymentService.payByCard(card);
 		return new ResponseEntity<>("Transaction is completed for the card: " + result.getCardNumber(), HttpStatus.OK);
 	}

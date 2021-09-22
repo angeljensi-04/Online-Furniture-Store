@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.onlinefurniturestore.entity.FurnitureOrder;
-import com.onlinefurniturestore.exception.UserNotFoundException;
+import com.onlinefurniturestore.exception.OrderServiceException;
 import com.onlinefurniturestore.service.OrderServiceInterface;
 
 /**
@@ -34,11 +34,11 @@ public class OrderController {
 	*Description	:To update Order details to the database
 	*Input Params	:Order to be updated in the database
 	*Return Value	:String 
-	*Exception	:UserNotFoundException-It is raised when Order is empty exist   
-	 * @throws UserNotFoundException 
+	*Exception	:OrderServiceException-It is raised when Order is empty exist   
+	 * @throws OrderServiceException 
 	**/
 	@PutMapping(path = "/updateOrder")
-	public String updateOrder(@RequestBody FurnitureOrder order) throws UserNotFoundException {
+	public String updateOrder(@RequestBody FurnitureOrder order) throws OrderServiceException {
 		FurnitureOrder user1 = osi.updateOrder(order);
 		return "User Updated Successfully" + user1;
 	}
@@ -48,11 +48,12 @@ public class OrderController {
 	*Description	:To update Order details to the database
 	*Input Params	:Order to be updated in the database
 	*Return Value	:String
-	*Exception	:UserNotFoundException-It is raised when Order id doesn't exist   
-	 * @throws UserNotFoundException 
+	*Exception	:OrderServiceException-It is raised when Order id doesn't exist   
+	 * 
+	 * @throws OrderServiceException 
 	**/
 	@PutMapping(path = "/updateOrderById/{orderId}")
-	public String updateOrderById(@RequestBody FurnitureOrder order) throws UserNotFoundException {
+	public String updateOrderById(@RequestBody FurnitureOrder order) throws  OrderServiceException {
 		FurnitureOrder user2 = osi.updateOrderById(order.getOrderId(), order);
 		return "User Updated Successfully" + user2;
 	}
@@ -60,11 +61,11 @@ public class OrderController {
 	/**
 	*Description	:To fetch all Order details from the database
 	*Return Value	:List<FurnitureOrder> object of the Order been fetched
-	*Exception	:UserNotFoundException-It is raised when there is no value in furniture 
-	 * @throws UserNotFoundException 
+	*Exception	:OrderServiceException-It is raised when there is no value in furniture 
+	 * @throws OrderServiceException 
 	**/
 	@GetMapping(path = "/getAllOrderDetails")
-	public ResponseEntity<List<FurnitureOrder>> getAllOrderDetails() throws UserNotFoundException {
+	public ResponseEntity<List<FurnitureOrder>> getAllOrderDetails() throws OrderServiceException {
 
 		List<FurnitureOrder> resultFurniture = osi.getAllOrders();
 		return new ResponseEntity<List<FurnitureOrder>>(resultFurniture, HttpStatus.OK);

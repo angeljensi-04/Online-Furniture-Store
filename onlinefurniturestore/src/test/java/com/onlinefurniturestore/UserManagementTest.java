@@ -71,7 +71,7 @@ import com.onlinefurniturestore.service.UserManagementServiceInterface;
 	void testUpdateUser() throws UserNotFoundException {
 		LOGGER.info("TEST CASE TC_05");
 		FurnitureUser user=new FurnitureUser(uId, "pwdnew", "admin", "username");
-		FurnitureUser dto = service.updateUser(user);
+		FurnitureUser dto = service.updateUser(uId,user);
 		assertNotNull(dto);
 		LOGGER.info("User with valid ID got updated");
 	}
@@ -81,7 +81,7 @@ import com.onlinefurniturestore.service.UserManagementServiceInterface;
 	void testUpdateUserInvalidID() {
 		LOGGER.info("TEST CASE TC_06");
 		FurnitureUser user=new FurnitureUser(150, "pwdnew", "admin", "username");
-		assertThrows(UserNotFoundException.class, ()-> service.updateUser(user));
+		assertThrows(UserNotFoundException.class, ()-> service.updateUser(150,user));
 		LOGGER.info("User with invalid ID thrown UserServiceException");
 	}
 	

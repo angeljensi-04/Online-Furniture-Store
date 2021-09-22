@@ -3,11 +3,11 @@ package com.onlinefurniturestore.service;
 import java.util.List;
 
 import com.onlinefurniturestore.entity.FurnitureOrder;
-import com.onlinefurniturestore.exception.UserNotFoundException;
+import com.onlinefurniturestore.exception.OrderServiceException;
 
 public interface OrderServiceInterface {
 
-	List<FurnitureOrder> getAllOrders() throws UserNotFoundException;
-	FurnitureOrder updateOrder(FurnitureOrder order) throws UserNotFoundException;
-	FurnitureOrder updateOrderById(String orderId,FurnitureOrder order) throws UserNotFoundException;
+	List<FurnitureOrder> getAllOrders() throws OrderServiceException;
+	FurnitureOrder updateOrder(FurnitureOrder order) throws OrderServiceException;
+	FurnitureOrder updateOrderById(String orderId,FurnitureOrder order) throws OrderServiceException;
 }

@@ -53,8 +53,13 @@ public class ReportService implements ReportServiceInterface {
 	public List<Bill> getAllBills() throws ReportException{
 		logger.info("Fetching bills inprogress...");
 		List<Bill> bills = billRepository.findAll();
+		if(bills!=null) {
 		logger.info("Bills details: " + bills);
 		return bills;
+		}
+		else {
+			throw new ReportException("There is no bills available");
+		}
 	}
 
 	/**
@@ -68,8 +73,13 @@ public class ReportService implements ReportServiceInterface {
 	public List<Customer> getAllCustomers() throws ReportException{
 		logger.info("Fetching customers inprogress...");
 		List<Customer> customers = customerRepository.findAll();
+		if(customers!=null) {
 		logger.info("Customers details: " + customers);
 		return customers;
+		}
+		else {
+			throw new ReportException("There is no customers");
+		}
 	}
 
 	/**
@@ -83,8 +93,13 @@ public class ReportService implements ReportServiceInterface {
 	public List<Cart> getAllCarts() throws ReportException{
 		logger.info("Fetching carts inprogress...");
 		List<Cart> carts = cartRepository.findAll();
+		if(carts!=null) {
 		logger.info("Carts details: " + carts);
 		return carts;
+		}
+		else {
+			throw new ReportException("There is no carts available");
+		}
 	}
 
 	/**
@@ -98,8 +113,13 @@ public class ReportService implements ReportServiceInterface {
 	public List<FurnitureOrder> getAllOrders() throws ReportException{
 		logger.info("Fetching orders inprogress...");
 		List<FurnitureOrder> orders = orderRepository.findAll();
+		if(orders!=null) {
 		logger.info("Orders details: " + orders);
 		return orders;
+		}
+		else {
+			throw new ReportException("There is no orders available");
+		}
 	}
 
 }

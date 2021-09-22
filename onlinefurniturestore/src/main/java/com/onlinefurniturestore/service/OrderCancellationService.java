@@ -67,7 +67,7 @@ public class OrderCancellationService implements OrderCancellationServiceInterfa
 			logger.info("Deleteing Furniture Order inprogress...");
 			FurnitureOrder del = orderRepo.findById(orderId).orElse(null);
 			if (del == null) {
-				throw new OrderServiceException("no user found");
+				throw new OrderServiceException("Order not found");
 			} else {
 				orderRepo.deleteById(orderId);
 				logger.info("Furniture Order" + orderId);

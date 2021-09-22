@@ -60,18 +60,13 @@ public class UserManagementService implements UserManagementServiceInterface {
 	@Transactional
 	@Override
 	public FurnitureUser registerNewUser(FurnitureUser user) throws UserNotFoundException {
-		Optional<FurnitureUser> userTemp = umd.findById(user.getUId());
 		try {
 			logger.info("Fetching FurnitureUser details inprogress...");
-			if (userTemp != null) {
+			
 				user = umd.save(user);
 				logger.info("Add FurnitureUser details: " + user);
 				return user;
 
-			} else {
-
-				throw new UserNotFoundException("The given User already exist");
-			}
 		} catch (Exception e) {
 			throw new UserNotFoundException("The given User is  already exist");
 		}
@@ -88,12 +83,11 @@ public class UserManagementService implements UserManagementServiceInterface {
 
 	@Transactional
 	@Override
-	public FurnitureUser updateUser(FurnitureUser user) throws UserNotFoundException {
-		Optional<FurnitureUser> resultUser = umd.findById(user.getUId());
+	public FurnitureUser updateUser(int uid,FurnitureUser user) throws UserNotFoundException {
+		Optional<FurnitureUser> resultUser = umd.findById(uid);
 		try {
 			logger.info("Fetching FurnitureUser details inprogress....");
 			if ((resultUser != null)) {
-
 				FurnitureUser updateUser = umd.save(user);
 				logger.info("Update FurnitureUser details: " + updateUser);
 				return updateUser;
@@ -145,6 +139,7 @@ public class UserManagementService implements UserManagementServiceInterface {
 	@Transactional
 	@Override
 	public FurnitureUser deleteUserById(int uid) throws UserNotFoundException {
+		
 		Optional<FurnitureUser> del = umd.findById(uid);
 		logger.info("Fetching FurnitureUser inprogress...");
 		if (del == null) {
@@ -174,6 +169,7 @@ public class UserManagementService implements UserManagementServiceInterface {
 	@Override
 	public FurnitureUser getId(int userId) throws UserNotFoundException {
 		Optional<FurnitureUser> getUser = umd.findById(userId);
+		try {
 		logger.info("Fetching FurnitureUser inprogress...");
 		if (getUser == null) {
 			throw new UserNotFoundException("User not found");
@@ -181,6 +177,9 @@ public class UserManagementService implements UserManagementServiceInterface {
 			FurnitureUser getUserId = umd.findById(userId).orElse(null);
 			logger.info("FurnitureUser details: " + getUserId);
 			return getUserId;
+		}}
+		catch(Exception e) {
+			throw new UserNotFoundException("User not found");
 		}
 	}
 

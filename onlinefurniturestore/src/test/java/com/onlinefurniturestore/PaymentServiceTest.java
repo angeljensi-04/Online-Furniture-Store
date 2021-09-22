@@ -14,6 +14,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 
 import com.onlinefurniturestore.entity.Bill;
 import com.onlinefurniturestore.entity.Card;
+import com.onlinefurniturestore.exception.PaymentException;
 import com.onlinefurniturestore.service.PaymentService;
 
 
@@ -40,7 +41,7 @@ import com.onlinefurniturestore.service.PaymentService;
 	}
 	
 	@Test
-	void getBillByIdTest() {
+	void getBillByIdTest() throws PaymentException {
 		when(paymentService.getBillById(anyLong())).thenReturn(bill);
 		Bill testTestBill = paymentService.getBillById(anyLong());
 		assertEquals(bill, testTestBill);
@@ -48,7 +49,7 @@ import com.onlinefurniturestore.service.PaymentService;
 	}
 	
 	@Test
-	void payByCashTest() throws Exception {
+	void payByCashTest() throws PaymentException {
 		when(paymentService.payByCash(anyDouble())).thenReturn(cashChange);
 		double testResult = paymentService.payByCash(anyDouble());
 		assertEquals(cashChange, testResult);
@@ -56,7 +57,7 @@ import com.onlinefurniturestore.service.PaymentService;
 	}
 	
 	@Test
-	void payByCard() throws Exception {
+	void payByCard() throws PaymentException {
 		when(paymentService.payByCard(card)).thenReturn(card);
 		Card testCard = paymentService.payByCard(card);
 		assertEquals(card, testCard);

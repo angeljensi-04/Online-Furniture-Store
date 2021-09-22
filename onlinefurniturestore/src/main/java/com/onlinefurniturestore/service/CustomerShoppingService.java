@@ -73,8 +73,13 @@ public class CustomerShoppingService implements CustomerShoppingServiceInterface
 		try {
 			logger.info("Fetching Furnitures inprogress...");
 			Furniture result = furnitureRepo.findbyName(furnitureName);
+			if(result!=null) {
 				logger.info("Furniture details: " + result);
-				return result; 
+				return result;
+			}
+			else {
+				throw new CustomerShoppingException("There is no value present in the furniture of the given name");
+			}
 		}
 		catch (Exception e) {
 			throw new CustomerShoppingException("Furnituer nor found");
