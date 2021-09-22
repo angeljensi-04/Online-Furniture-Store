@@ -1,5 +1,7 @@
 package com.onlinefurniturestore;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,7 +21,7 @@ public class OrderCancellationTest {
 	final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
 
 	@Autowired
-	private OrderCancellationServiceInterface Service;
+	private OrderCancellationServiceInterface service;
 	
 	@Test
 	void testdeleteById() throws OrderServiceException{
@@ -34,7 +36,7 @@ public class OrderCancellationTest {
 		furniture.setFurnitureColor("blue");
 		furniture.setFurnitureModel("Wingback Chair");
 		furniture.setFurnitureName("Chair");
-		
+		order.setFurniture(furniture);
 		Customer customer = new Customer();
 		customer.setName("angel");
 		customer.setContactNo("9443204173");
@@ -50,6 +52,13 @@ public class OrderCancellationTest {
 		address.setState("TN");
 		address.setPincode("628501");
 		customer.setAddress(address);
+		order.setCustomer(customer);
+		assertEquals(order.getQuanity(), service.deleteOrderById("12").getQuanity());
+	}
+	
+	@Test
+	void testAllDelete() throws OrderServiceException{
+		assertEquals("All Values are deleted successfully",service.deleteOrder());
 	}
 
 }

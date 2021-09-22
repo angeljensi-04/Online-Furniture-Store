@@ -103,6 +103,7 @@ public class ShopingCartService implements ShopingCartServiceInterface {
 	@Transactional
 	@Override
 	public String deleteCart() throws ShopingCartException {
+		try {
 		logger.info("Delete cart inprogress...");
 		List<Cart> cartTemp = shopingrepo.findAll();
 		if (cartTemp.isEmpty()) {
@@ -111,6 +112,9 @@ public class ShopingCartService implements ShopingCartServiceInterface {
 			shopingrepo.deleteAll();
 			logger.info("All Cart Deleted ");
 			return "All carts deleted";
+		}}
+		catch(Exception e) {
+			throw new ShopingCartException("Cart not found");
 		}
 	}
 
@@ -132,7 +136,8 @@ public class ShopingCartService implements ShopingCartServiceInterface {
 			return cart.get();
 		} else {
 			throw new ShopingCartException("Cart does not exist");
-		}}
+		}
+		}
 		catch (Exception e) {
 			throw new ShopingCartException("Cart does not exist");
 		}

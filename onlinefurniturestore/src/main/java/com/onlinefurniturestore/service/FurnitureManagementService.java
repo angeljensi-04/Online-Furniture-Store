@@ -88,7 +88,7 @@ public class FurnitureManagementService implements FurnitureManagementServiceInt
 	 * Return Value :Furniture object 
 	 * Exception : FurnitureServiceException - It is raised when Furniture already exist
 	 **/
-	@Transactional(readOnly = true)
+	@Transactional
 	@Override
 	public Furniture registerFurniture(Furniture furniture) throws FurnitureServiceException {
 		logger.info(" Furniture inprogress...");
