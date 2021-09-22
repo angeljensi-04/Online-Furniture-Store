@@ -70,12 +70,15 @@ public class CustomerShoppingService implements CustomerShoppingServiceInterface
 	@Override
 	public Furniture getFurnitureByName(String furnitureName) throws CustomerShoppingException {
 
-		
+		try {
 			logger.info("Fetching Furnitures inprogress...");
 			Furniture result = furnitureRepo.findbyName(furnitureName);
 				logger.info("Furniture details: " + result);
 				return result; 
-
+		}
+		catch (Exception e) {
+			throw new CustomerShoppingException("Furnituer nor found");
+		}
 	}
 
 	

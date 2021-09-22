@@ -73,10 +73,10 @@ public class PaymentService implements PaymentServiceInterface {
 
 	private boolean isCardValid(Card card) throws Exception {
 		if(!(card.getCardNumber().equals(null)) && (card.getCvv()!=0)) {
-			if (card.getCvv() > 3) {
+			if (card.getCvv() != 3) {
 				throw new ReportException("Invalid CVV");
 			}
-			if (card.getCardNumber().length() > 9) {
+			if (card.getCardNumber().length() != 9) {
 				throw new ReportException("Invalid card number");
 			}
 			if (null == card.getCardExpiry()) {
