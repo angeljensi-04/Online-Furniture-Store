@@ -1,7 +1,6 @@
 package com.onlinefurniturestore.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.transaction.annotation.Transactional;
 
@@ -63,16 +62,16 @@ public class OrderCancellationService implements OrderCancellationServiceInterfa
 	**/
 	@Transactional
 	@Override
-	public String deleteOrderById(String orderId) throws OrderServiceException {
+	public FurnitureOrder deleteOrderById(String orderId) throws OrderServiceException {
 		try {
 			logger.info("Deleteing Furniture Order inprogress...");
-			Optional<FurnitureOrder> del = orderRepo.findById(orderId);
+			FurnitureOrder del = orderRepo.findById(orderId).orElse(null);
 			if (del == null) {
 				throw new OrderServiceException("no user found");
 			} else {
 				orderRepo.deleteById(orderId);
 				logger.info("Furniture Order" + orderId);
-				return "Order Deleted" + del;
+				return del;
 
 			}
 		} catch (Exception e) {

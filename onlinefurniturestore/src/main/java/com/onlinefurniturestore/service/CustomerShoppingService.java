@@ -116,7 +116,7 @@ public class CustomerShoppingService implements CustomerShoppingServiceInterface
 	 * 
 	 * throws CustomerShoppingException
 	 **/
-	@Transactional
+	@Transactional(readOnly = true)
 	@Override
 	public FurnitureOrder placeOrder(FurnitureOrder order) throws CustomerShoppingException {
 		if ((order.getOrderId()!=null)) {

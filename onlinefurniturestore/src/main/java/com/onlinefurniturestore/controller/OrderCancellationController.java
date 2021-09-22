@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.onlinefurniturestore.entity.FurnitureOrder;
 import com.onlinefurniturestore.exception.OrderServiceException;
 import com.onlinefurniturestore.service.OrderCancellationServiceInterface;
 
@@ -31,10 +32,10 @@ public class OrderCancellationController {
 	 **/
 	
 	@DeleteMapping(path = "/deleteFurniture/{orderId}")
-	public String deleteFurnitureByID(@PathVariable("orderId") String orderId) throws OrderServiceException {
+	public FurnitureOrder deleteFurnitureByID(@PathVariable("orderId") String orderId) throws OrderServiceException {
 
-		ordercancellation.deleteOrderById(orderId);
-		return "Order cancelled successfully" + orderId;
+		return ordercancellation.deleteOrderById(orderId);
+		
 
 	}
 
