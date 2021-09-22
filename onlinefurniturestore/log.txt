@@ -1,0 +1,7 @@
+2021-09-21 09:34:45.541  INFO 18684 --- [restartedMain] c.o.OnlinefurniturestoreApplication      : Starting OnlinefurniturestoreApplication using Java 1.8.0_301 on LIN76003579 with PID 18684 (C:\Users\APRABHAD\OneDrive - Capgemini\Documents\Capgemini materilas\Sprint 1 Project\Project codes\onlinefurniturestore\bin\main started by aprabhad in C:\Users\APRABHAD\OneDrive - Capgemini\Documents\Capgemini materilas\Sprint 1 Project\Project codes\onlinefurniturestore)
+2021-09-21 09:34:45.542  INFO 18684 --- [restartedMain] c.o.OnlinefurniturestoreApplication      : No active profile set, falling back to default profiles: default
+2021-09-21 09:34:47.093  INFO 18684 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-09-21 09:34:47.344  INFO 18684 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 209 ms. Found 8 JPA repository interfaces.
+2021-09-21 09:34:47.978  INFO 18684 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-09-21 09:34:47.981  INFO 18684 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-09-21 09:34:47.982  INFO 18684 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.52]

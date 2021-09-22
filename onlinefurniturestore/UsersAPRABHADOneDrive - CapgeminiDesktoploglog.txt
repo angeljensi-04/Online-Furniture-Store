@@ -1,0 +1,34 @@
+2021-09-21 11:32:07.843  INFO 7440 --- [restartedMain] c.o.OnlinefurniturestoreApplication      : Starting OnlinefurniturestoreApplication using Java 1.8.0_301 on LIN76003579 with PID 7440 (C:\Users\APRABHAD\OneDrive - Capgemini\Documents\Capgemini materilas\Sprint 1 Project\Project codes\onlinefurniturestore\bin\main started by aprabhad in C:\Users\APRABHAD\OneDrive - Capgemini\Documents\Capgemini materilas\Sprint 1 Project\Project codes\onlinefurniturestore)
+2021-09-21 11:32:07.844  INFO 7440 --- [restartedMain] c.o.OnlinefurniturestoreApplication      : No active profile set, falling back to default profiles: default
+2021-09-21 11:32:08.330  INFO 7440 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-09-21 11:32:08.378  INFO 7440 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 47 ms. Found 8 JPA repository interfaces.
+2021-09-21 11:32:08.557  INFO 7440 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-09-21 11:32:08.558  INFO 7440 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-09-21 11:32:08.559  INFO 7440 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-09-21 11:32:08.575  INFO 7440 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-09-21 11:32:08.575  INFO 7440 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 728 ms
+2021-09-21 11:32:08.610  INFO 7440 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-09-21 11:32:08.615  INFO 7440 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2021-09-21 11:32:08.729  INFO 7440 --- [restartedMain] com.zaxxer.hikari.pool.PoolBase          : HikariPool-3 - Driver does not support get/set network timeout for connections. (Method org.postgresql.jdbc.PgConnection.getNetworkTimeout() is not yet implemented.)
+2021-09-21 11:32:08.731  INFO 7440 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2021-09-21 11:32:08.731  INFO 7440 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2021-09-21 11:32:09.009  INFO 7440 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-09-21 11:32:09.009  INFO 7440 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-09-21 11:32:09.295  WARN 7440 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-09-21 11:32:09.354  INFO 7440 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-09-21 11:32:09.397  INFO 7440 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-09-21 11:32:09.443  INFO 7440 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-21 11:32:09.444  INFO 7440 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-09-21 11:32:09.445  INFO 7440 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-09-21 11:32:09.451  INFO 7440 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-09-21 11:32:09.497  INFO 7440 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllFurnitureDetailsUsingGET_1
+2021-09-21 11:32:09.505  INFO 7440 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteFurnitureByIDUsingDELETE_1
+2021-09-21 11:32:09.540  INFO 7440 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllCartsUsingGET_1
+2021-09-21 11:32:09.561  INFO 7440 --- [restartedMain] c.o.OnlinefurniturestoreApplication      : Started OnlinefurniturestoreApplication in 1.751 seconds (JVM running for 739.99)
+2021-09-21 11:32:09.563  INFO 7440 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2021-09-21 11:32:32.474  INFO 7440 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-09-21 11:32:32.475  INFO 7440 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-09-21 11:32:32.476  INFO 7440 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2021-09-21 11:34:19.178  INFO 7440 --- [Thread-14] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-09-21 11:34:19.179  INFO 7440 --- [Thread-14] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2021-09-21 11:34:19.187  INFO 7440 --- [Thread-14] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
